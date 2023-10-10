@@ -5,13 +5,13 @@ const path = require('path');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const dotenv = require('dotenv');
-const bodyParser = require("body-parser");
 
 dotenv.config();
 
 // start express server
 const app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // connnect to DB
 mongoose.connect('mongodb://0.0.0.0:27017/AdsPageBackend', { useNewUrlParser: true });

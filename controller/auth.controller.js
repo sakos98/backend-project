@@ -12,42 +12,34 @@ exports.register = async (req, res) => {
       return res.status(400).send({ message: 'File size exceeds the limit (1 MB)' });
     }
 
-    const { login, password } = req.body;
+    const { login, password, phone } = req.body;
     // console.log(req.body, req.file);
     const fileType = req.file ? await getImageFileType(req.file) : 'unknown';
-    console.log('login:', login);
-    console.log('password:', password);
-    console.log('req.file:', req.file);
-    console.log(1);
+    
     if (login && typeof login === 'string' && password && typeof password === 'string' && req.file 
     && ['image/png', 'image/jpeg', 'image/gif', 'image/jpg'].includes(fileType)) {
-      console.log(2);
 
       const userWithLogin = await User.findOne({ login });
       if (userWithLogin) {
-    console.log(3);
 
         // Usuń plik, jeśli użytkownik o danym loginie już istnieje
         fs.unlinkSync(req.file.path);
         return res.status(409).send({ message: 'User with this login already exists' });
       }
       // Tworzenie nowego użytkownika
-    console.log(4);
 
       const user = await User.create({ 
         login, 
         password: await bcrypt.hash(password, 10), 
+        phone,
         avatar: req.file.filename 
       });
-      console.log(5);
 
       res.status(201).send({ message: 'User created' + user.login });
     } else {
       // Usuń plik, jeśli wystąpił błąd związany z żądaniem
-    console.log(6);
 
       if (req.file) {
-    console.log(7);
 
         fs.unlinkSync(req.file.path);
       }
@@ -55,11 +47,9 @@ exports.register = async (req, res) => {
     }
   } 
     catch (err){
-    console.log(8);
 
     // Usuń plik, jeśli wystąpił błąd podczas przetwarzania
     if (req.file) {
-    console.log(9);
 
       fs.unlinkSync(req.file.path);
     }

@@ -85,7 +85,7 @@ exports.login = async (req, res) => {
 
 exports.getUser = async (req, res) => {
   const { login } = req.body;
-  res.send('Yeah! I\'m logged' + login);
+  res.send({ message: 'Yeah! I\'m logged' + login});
 }
 
 exports.userLogout = async (req, res) => {

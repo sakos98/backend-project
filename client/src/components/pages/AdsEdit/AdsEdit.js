@@ -1,9 +1,6 @@
 const AdsEdit = () => {
   return (
-    <div>
-      <h1>AdsEdit</h1>
-    </div>
-  )  
+    <h1>AdsEdit</h1>
+  )
 }
-
 export default AdsEdit;

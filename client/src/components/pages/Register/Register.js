@@ -40,6 +40,9 @@ const Register = () => {
           setStatus('serverError');
         }
       })
+      .catch(err => {
+        setStatus('serverError');
+      });
   }
 
   return (

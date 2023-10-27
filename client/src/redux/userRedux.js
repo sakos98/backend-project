@@ -1,4 +1,5 @@
-export const getAllUsers = ({ user }) => user;
+//selectors
+export const getAllUsers = ({ users }) => users;
 
 // actions
 const createActionName = actionName => `app/users/${actionName}`;

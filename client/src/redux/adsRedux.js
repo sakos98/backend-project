@@ -26,7 +26,7 @@ export const updateAds = (updatedAdData) => ({
 export const fetchAds = () => {
   return async (dispatch) => {
     try {
-      const response = await fetch(`${API_URL}/api/ads`);
+      const response = await fetch(`${API_URL}api/ads`);
       const data = await response.json();
       dispatch(updateAds(data));
     } catch (error) { 
@@ -46,6 +46,7 @@ const adsReducer = (statePart = [], action) => {
     case SEARCH_ADS:
       return statePart.filter((ad) => ad.title.includes(action.payload));
     case UPDATE_ADS:
+      console.log('Updated ads:', action.payload.ads);
       return [...action.payload.ads];
     default:
       return statePart;

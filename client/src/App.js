@@ -24,7 +24,7 @@ import Profile from './components/pages/Profile/Profile';
 
 function App() {
   return (
-    <main>
+    <div>
       <Container>
         <Header />
         <Routes>
@@ -42,7 +42,7 @@ function App() {
         </Routes>
         <Footer />
       </Container>
-    </main>
+    </div>
   );
 }
 

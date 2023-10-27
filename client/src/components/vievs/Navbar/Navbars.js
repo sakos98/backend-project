@@ -1,3 +1,4 @@
+import styles from '../Navbar/navbar.module.scss'
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavLink from 'react-bootstrap/esm/NavLink';
@@ -5,6 +6,10 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { API_URL } from '../../../config';
 import Logout from '../../pages/Logout/Logout';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 
 function Navbars() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -31,11 +36,21 @@ function Navbars() {
   }, [user]);
 
   return (
-
     <Navbar bg="primary" variant="dark" className='justify-content-between mt-4 mb-4 rounded'>
-      <Navbar.Brand className="ml-auto">Ads.app</Navbar.Brand>
+      <Nav.Link href="/" as={NavLink} className={styles.home}>Ads.app</Nav.Link>
       <Nav className="mr-auto">
-        <Nav.Link href="/" as={NavLink}>Home</Nav.Link>
+        <Row>
+          <Col xs="auto">
+            <Form.Control
+              type="text"
+              placeholder="Search"
+              className=" mr-sm-2"
+            />
+          </Col>
+          <Col xs="auto">
+            <Button type="submit" variant="light">Submit</Button>
+          </Col>
+        </Row>
       </Nav>
       <Nav>
         {isAuthenticated ? (

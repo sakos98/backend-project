@@ -10,7 +10,6 @@ import styles from '../SingleAds/SingleAds.module.scss';
 import { API_URL, IMG_URL } from '../../../config';
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import { dateToStr } from '../../../utils/dateToStr';
 
 const SinglePost = props => {
 

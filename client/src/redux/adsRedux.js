@@ -26,7 +26,7 @@ export const updateAds = (updatedAdData) => ({
 export const fetchAds = () => {
   return async (dispatch) => {
     try {
-      const response = await fetch(`${API_URL}api/ads`);
+      const response = await fetch(`${API_URL}/api/ads`);
       const data = await response.json();
       dispatch(updateAds(data));
     } catch (error) { 

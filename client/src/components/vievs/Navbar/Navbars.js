@@ -10,10 +10,17 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { InputGroup } from 'react-bootstrap';
 
 function Navbars() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const user = useSelector(state => state.user);
+  
+  const [searchPhrase, setSearchPhrase] = useState('');
+
+  const handleSearch = () => {
+    window.location.href = `/search/${searchPhrase}`;
+  };
 
   useEffect(() => {
     const checkAuthStatus = async () => {
@@ -41,21 +48,20 @@ function Navbars() {
       <Nav className="mr-auto">
         <Row>
           <Col xs="auto">
-            <Form.Control
-              type="text"
-              placeholder="Search"
-              className=" mr-sm-2"
-            />
-          </Col>
-          <Col xs="auto">
-            <Button type="submit" variant="light">Submit</Button>
+          <InputGroup className="mb-3">
+        <Form.Control type="text"
+          placeholder="find ads..."
+          value={searchPhrase}
+          onChange={(e) => setSearchPhrase(e.target.value)}
+        />
+        <Button variant="info" onClick={handleSearch}>Search</Button>
+      </InputGroup> 
           </Col>
         </Row>
       </Nav>
       <Nav>
         {isAuthenticated ? (
           <>
-            <Nav.Link href="/profile" as={NavLink}>My ads</Nav.Link>
             <Nav.Link href="/ads/add" as={NavLink}>Add ads</Nav.Link>
             <Nav.Link href="/logout" as={NavLink}><Logout /></Nav.Link>
           </>

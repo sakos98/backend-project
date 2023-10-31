@@ -1,6 +1,8 @@
+import FormAdsEdit from "../../features/FormAdsEdit";
+
 const AdsEdit = () => {
   return (
-    <h1>AdsEdit</h1>
+    <FormAdsEdit />
   )
 }
 export default AdsEdit;

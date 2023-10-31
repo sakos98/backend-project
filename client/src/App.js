@@ -8,7 +8,6 @@ import Header from './components/vievs/Header/Header';
 import Footer from './components/vievs/Footer/Footer';
 
 import Home from './components/pages/Home/Home';
-import AdsAll from './components/pages/AdsAll/AdsAll';
 import AdsAdd from './components/pages/AdsAdd/AdsAdd';
 import AdsEdit from './components/pages/AdsEdit/AdsEdit';
 import AdsRemove from './components/pages/AdsRemove/AdsRemove';
@@ -18,9 +17,7 @@ import Register from './components/pages/Register/Register';
 import Logout from './components/pages/Logout/Logout';
 import NotFound from './components/pages/NotFound/NotFound';
 import Profile from './components/pages/Profile/Profile';
-
-
-
+import SingleAds from './components/pages/SingleAds/SingleAds';
 
 function App() {
   return (
@@ -29,7 +26,7 @@ function App() {
         <Header />
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/ads/:id' element={<AdsAll />} />
+          <Route path='/ads/:id' element={<SingleAds />} />
           <Route path='/ads/add' element={<AdsAdd/>} />
           <Route path='/ads/edit/:id' element={<AdsEdit />} />
           <Route path='/ads/remove/:id' element={<AdsRemove />} />

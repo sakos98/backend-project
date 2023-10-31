@@ -4,10 +4,12 @@ import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { IMG_URL } from '../../config';
 import styles from '../features/CardAds.module.scss'
+import { dateToStr } from '../../utils/dateToStr';
 
 
 
 const CardAds = ({ title, describe, photo, datePublish, price, location, infoOfSeller, _id }) => {
+  const formattedDate = dateToStr(new Date(datePublish));
   return (
     <div className={styles.card}>
     <Card style={{ width: '18rem' }}>
@@ -18,13 +20,13 @@ const CardAds = ({ title, describe, photo, datePublish, price, location, infoOfS
         <Card.Text>
           {describe}
         </Card.Text>
-        <ListGroup.Item>{datePublish}</ListGroup.Item>
+        <ListGroup.Item>{formattedDate}</ListGroup.Item>
         <ListGroup.Item>{price}</ListGroup.Item>
         <ListGroup.Item>{location}</ListGroup.Item>
         <ListGroup.Item>{infoOfSeller}</ListGroup.Item>
       </ListGroup>
       <Link to={"/ads/" + _id}>
-            <Button variant="success">Read more</Button>
+            <Button variant="primary">Read more</Button>
           </Link> 
     </Card.Body>  
   </Card>

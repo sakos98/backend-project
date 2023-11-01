@@ -22,7 +22,7 @@ db.once('open', () => {
 });
 db.on('error', err => console.log('Error ' + err));
 
-const server = app.listen('8000', () => {
+const server = app.listen(8000, () => {
   console.log('Server is running on port: 8000');
 });
 
@@ -36,7 +36,7 @@ app.use((req, res, next) => {
 if(process.env.NODE_ENV !== 'production') {
   app.use(
     cors({
-      origin: ['http://localhost:3000'],
+      origin: ['http://localhost:8000'],
       credentials: true,
     })
   );
@@ -52,7 +52,7 @@ app.use(session({
 } }));
 
 // server static files from the React app 
-// app.use(express.static(path.join(__dirname, '/client/build')));
+app.use(express.static(path.join(__dirname, '/client/build')));
 app.use(express.static(path.join(__dirname, '/public')));
 
 // add routes
